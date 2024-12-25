@@ -31,7 +31,17 @@ class ModelTrainer:
             )
 
             models={
-            'RandomForest' : RandomForestClassifier()
+            'RandomForest' : RandomForestClassifier(
+                random_state=42, 
+                n_estimators=200, 
+                max_depth=20, 
+                min_samples_split=2, 
+                min_samples_leaf=1, 
+                max_features='sqrt',
+                criterion='gini', 
+                class_weight='balanced_subsample', 
+                bootstrap=False
+            )
         }
             
             model_report:dict=evaluate_model(X_train,y_train,X_test,y_test,models)
